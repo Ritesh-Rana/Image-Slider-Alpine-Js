@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body x-data="{items:[]}">
+    <div  class="bg-green-200">
+        <div class="flex justify-center items-center h-full w-full">
+            <div class="m-4 bg-white h-32 w-[900px] border-2 border-red-300">
+
+                <h1 class="font-bold text-center">To Do List</h1>
+                <div class="flex m-4 gap-4" x-data="{value:''}">
+                    <input type="text" x-model="value" class="font-mono bg-red-100 rounded-lg p-6 w-full h-8">
+                    <button @click="if(value!='')items.push(value);value=''"
+                        class="bg-green-200 rounded-xl px-2">ADD</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div >
+        <div class="grid grid-cols-2 gap-10">
+        <template x-for="item in items">
+            <div>
+                <span x-text="item"></span>
+                <button class="bg-green-200 rounded-xl px-2">Edit</button>
+                <button class="bg-green-200 rounded-xl px-2">Done</button>
+                <button class="bg-green-200 rounded-xl px-2">Delete</button>
+            </div>
+            </template>
+        </div>
+    </div>
+</body>
+
+</html>
