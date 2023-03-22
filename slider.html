@@ -11,13 +11,16 @@
 </head>
 
 <body x-data="slider">
+    <div class="flex justify-center items-center bg-green-200 h-20 w-full">
+        <span>~ Image Slider Using AlpineJS ~</span>
+    </div>
     <div x-data="items">
         <template x-for="item in items">
             <img class="h-64 w-full object-cover object-center" :src="item.images[i.current]">
         </template>
-        <button @click="i.current=handleClickPlus(i.current)">NEXT</button>
-        <button @click="i.current=handleClickMinus(i.current)">PREV</button>
-        <span x-text="i.current"></span>
+        <button class="text-blue-300 text-6xl relative bottom-44 left-[75%] animate-bounce" @click="i.current=handleClickPlus(i.current)">></button>
+        <button class="text-blue-300 text-6xl relative bottom-44 left-[25%] animate-bounce"  @click="i.current=handleClickMinus(i.current)"><</button>
+        <!-- <span x-text="i.current"></span> -->
     </div>
     <script>
         document.addEventListener('alpine:init', () => {
@@ -41,13 +44,13 @@
                     if (e < 5)
                         return e = e + 1;
                     else
-                        return e;
+                        return 0;
                 },
                 handleClickMinus(e) {
                     if (e > 0)
                         return e = e - 1;
                     else
-                        return e;
+                        return 5;
                 }
             }))
         })
