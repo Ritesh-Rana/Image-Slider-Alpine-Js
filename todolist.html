@@ -11,7 +11,7 @@
 </head>
 
 <body x-data="{items:[]}">
-    <div  class="bg-green-200">
+    <div class="bg-green-200">
         <div class="flex justify-center items-center h-full w-full">
             <div class="m-4 bg-white h-32 w-[900px] border-2 border-red-300">
 
@@ -21,21 +21,21 @@
                     <button @click="if(value!='')items.push(value);value=''"
                         class="bg-green-200 rounded-xl px-2">ADD</button>
                 </div>
+               
             </div>
         </div>
-    </div>
-    <div >
-        <div class="grid grid-cols-1 gap-10">
+        <div class="bg-gradient-to-b from-green-50 to-green-300 p-28 h-full">
         <template x-for="item in items">
-            <div class="flex justify-center items-center gap-3">
-                <span x-text="item"></span>
-                <button class="bg-green-200 rounded-xl px-2">Edit</button>
-                <button class="bg-green-200 rounded-xl px-2">Done</button>
-                <button class="bg-green-200 rounded-xl px-2">Delete</button>
+            <div class="flex items-center">
+                <p class="w-full" x-text="item"></p>
+                <button class="p-2 ml-4 border-2 rounded hover:bg-white">Edit</button>
+                <button class="p-2 ml-4 border-2 rounded hover:bg-white">Remove</button>
+                <button class="p-2 ml-4 border-2 rounded hover:bg-white">Done</button>
             </div>
-            </template>
-        </div>
+        </template>
     </div>
+    </div>
+    
 </body>
 
 </html>
