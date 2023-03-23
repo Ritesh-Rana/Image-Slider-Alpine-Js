@@ -32,9 +32,11 @@
                     <p class="col-span-2" :class="item.done ? 'line-through text-red-700' : ''" 
                         x-text="item.item" x-show="!item.edit"></p>  
                     <input type="text" class="col-span-2" x-model="item.item" x-show="item.edit"> 
-                    <button class="bg-red-100" @click="item.edit=!item.edit">Edit</button> 
+                    <button class="bg-red-100" @click="item.edit=!item.edit">
+                        <span x-text="item.edit ? 'Save' : 'Edit'"></span>
+                    </button> 
                     <button class="bg-red-100" @click="item.done=!item.done">Done</button> 
-                    <button class="bg-red-100">Remove</button> 
+                    <button class="bg-red-100" @click="$event.target.remove()" >Remove</button> 
                 </div>
             </template>
         </div>
