@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headache</title>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body class="antialiased sans-serif bg-gray-200">
+  <div x-data="app()" x-cloak class="px-4">
+    <div class="w-[700px] bg-green-50 rounded-xl  h-full p-4 mt-[10%] ml-[30%]">
+      <div class="flex justify-between items-center">
+        <div>
+          <h2 class="text-xl text-gray-800 w-full font-bold leading-tight">Product Sales</h2>
+          <p class="mb-2 text-gray-600 w-full text-sm">Monthly Average</p>
+        </div>
+        <div class="mb-4">
+          <div class="flex items-center float-right">
+            <div class="w-4 h-4 bg-blue-600 mr-2 rounded-full"></div>
+            <div class="text-sm text-gray-700">Sales</div>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class="flex items-end m-8 gap-6 w-full">
+          <template x-for="hi in chartData">
+            <div @mouseenter="hi.show=true" @mouseleave="hi.show=false" class="bg-blue-600 w-8 hover:bg-red-500"
+              :style="`height: ${hi.h}px`">
+              <span x-show="hi.show" class="relative bottom-10  rounded-xl" x-text="hi.h"></span>
+            </div>
+          </template>
+        </div>
+        <hr>
+        <div class="flex items-end gap-6 m-8 w-full">
+          <template x-for="hi in chartData">
+            <div class="flex">
+              <span x-text="hi.month" class="w-8"></span>
+            </div>
+          </template>
+        </div>
+        <div class="flex items-end gap-6 m-8 w-full">
+          <template x-for="hi in chartData">
+            <div class="flex">
+              <span x-text="hi.month" class="w-8"></span>
+            </div>
+          </template>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function app() {
+      return {
+        chartData: [{ h: 112, show: false, month: 'Jan' }, { h: 100, show: false, month: 'Feb' }, { h: 225, show: false, month: 'Mar' }, { h: 234, show: false, month: 'Apr' }, { h: 170, show: false, month: 'May' }, { h: 97, show: false, month: 'Jun' }, { h: 240, show: false, month: 'Jul' }, { h: 167, show: false, month: 'Aug' }, { h: 183, show: false, month: 'Sep' }, { h: 300, show: false, month: 'Oct' }, { h: 183, show: false, month: 'Nov' }],
+      }
+    }
+  </script>
+</body>
+
+</html>
