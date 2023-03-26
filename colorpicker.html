@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body x-data="c=colors()">
+    <div x-data="{bg:'bg-blue-100',open:true}" >
+    
+    <div :class="`${bg}`" class="h-10 w-[50%]">
+    </div>
+    <div class="w-80 ml-20">
+        <h1>Input A color</h1>
+        <input type="text" x-model="bg" class="border-red-300 border-2" placeholder="Select colo here ...." @keydown.enter="open=true">
+        <button @click="open=!open">Open</button>
+    </div>
+        <div class="p-4 bg-white ml-14" x-show="open">
+            <template x-for="color in c">
+                <div class="p-2">
+                    <template x-for="x in color">
+                        <span class="px-4 py-2 rounded-full" @click="bg=x" :class="x"></span>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <script>
+        function colors() {
+            return [
+                ['bg-green-50', 'bg-green-100', 'bg-green-200', 'bg-green-300', 'bg-green-400', 'bg-green-500', 'bg-green-600', 'bg-green-700', 'bg-green-800', 'bg-green-900'],
+                ['bg-blue-50', 'bg-blue-100', 'bg-blue-200', 'bg-blue-300', 'bg-blue-400', 'bg-blue-500', 'bg-blue-600', 'bg-blue-700', 'bg-blue-800', 'bg-blue-900'],
+                ['bg-red-50', 'bg-red-100', 'bg-red-200', 'bg-red-300', 'bg-red-400', 'bg-red-500', 'bg-red-600', 'bg-red-700', 'bg-red-800', 'bg-red-900'],
+                ['bg-gray-50', 'bg-gray-100', 'bg-gray-200', 'bg-gray-300', 'bg-gray-400', 'bg-gray-500', 'bg-gray-600', 'bg-gray-700', 'bg-gray-800', 'bg-gray-900'],
+                ['bg-purple-50', 'bg-purple-100', 'bg-purple-200', 'bg-purple-300', 'bg-purple-400', 'bg-purple-500', 'bg-purple-600', 'bg-purple-700', 'bg-purple-800', 'bg-purple-900'],
+                ['bg-orange-50', 'bg-orange-100', 'bg-orange-200', 'bg-orange-300', 'bg-orange-400', 'bg-orange-500', 'bg-orange-600', 'bg-orange-700', 'bg-orange-800', 'bg-orange-900'],
+            ];
+        }
+    </script>
+
+</html>
