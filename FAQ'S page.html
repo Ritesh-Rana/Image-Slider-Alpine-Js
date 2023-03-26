@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body class="bg-green-100">
+
+    <div class="w-full h-full p-10 ">
+        <h1 class="text-center font-mono ">FAQ'S page</h1>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">1</span>
+            <span class="text-blue-600">What is Alpine.js ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+                    Alpine is a rugged, minimal tool for composing behavior directly in your markup. Think of it like jQuery for the modern web. Plop in a script tag and get going.
+                </span>
+            </div>
+        </div>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">2</span>
+            <span class="text-blue-600">Is it difficult to learn ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+
+                    Its lightweight design, simple syntax, and strong performance make it a great choice for developers who want to build fast and efficient applications without a lot of overhead. If you're looking for a lightweight and easy-to-use library for building modern applications, Alpine. js is definitely worth your while.                </span>
+            </div>
+        </div>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">3</span>
+            <span class="text-blue-600">How can i use this code ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+                    Code editors are a great tool for new developers because they offer many features that make our lives easier. For example, Visual Studio Code (my choice) will offer syntax suggestions so you can avoid simple typos that cause issues in your code. On top of that, it will autocomplete closing tags for HTML and add visual markers to your files so that you can easily tell different pieces of code apart.
+
+                    You can see the difference between a regular text editor and a code editor below. The code works the same in both documents, but one is much easier to understand at a glance than the other.                </span>
+            </div>
+        </div>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">4</span>
+            <span class="text-blue-600">What is Alpine.js ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+                    Alpine is a rugged, minimal tool for composing behavior directly in your markup. Think of it like jQuery for the modern web. Plop in a script tag and get going.
+                </span>
+            </div>
+        </div>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">5</span>
+            <span class="text-blue-600">Is it difficult to learn ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+
+                    Its lightweight design, simple syntax, and strong performance make it a great choice for developers who want to build fast and efficient applications without a lot of overhead. If you're looking for a lightweight and easy-to-use library for building modern applications, Alpine. js is definitely worth your while.                </span>
+            </div>
+        </div>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">6</span>
+            <span class="text-blue-600">How can i use this code ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+                    Code editors are a great tool for new developers because they offer many features that make our lives easier. For example, Visual Studio Code (my choice) will offer syntax suggestions so you can avoid simple typos that cause issues in your code. On top of that, it will autocomplete closing tags for HTML and add visual markers to your files so that you can easily tell different pieces of code apart.
+
+                    You can see the difference between a regular text editor and a code editor below. The code works the same in both documents, but one is much easier to understand at a glance than the other.                </span>
+            </div>
+        </div>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">7</span>
+            <span class="text-blue-600">What is Alpine.js ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+                    Alpine is a rugged, minimal tool for composing behavior directly in your markup. Think of it like jQuery for the modern web. Plop in a script tag and get going.
+                </span>
+            </div>
+        </div>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">8</span>
+            <span class="text-blue-600">Is it difficult to learn ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+
+                    Its lightweight design, simple syntax, and strong performance make it a great choice for developers who want to build fast and efficient applications without a lot of overhead. If you're looking for a lightweight and easy-to-use library for building modern applications, Alpine. js is definitely worth your while.                </span>
+            </div>
+        </div>
+        <div x-data="{open:false}" @click="open=!open" class="bg-white shadow-lg p-4 rounded-lg m-4 hover:bg-red-100 transition-all duration-500 font-mono">
+            <span class="px-2 py-1 m-4 bg-gray-200 rounded ">9</span>
+            <span class="text-blue-600">How can i use this code ?</span>
+            <button x-text="open ? '-' : '+'" class="float-right"></button> 
+            <div x-show="open"  x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+                <span class="ml-16">
+                    Code editors are a great tool for new developers because they offer many features that make our lives easier. For example, Visual Studio Code (my choice) will offer syntax suggestions so you can avoid simple typos that cause issues in your code. On top of that, it will autocomplete closing tags for HTML and add visual markers to your files so that you can easily tell different pieces of code apart.
+
+                    You can see the difference between a regular text editor and a code editor below. The code works the same in both documents, but one is much easier to understand at a glance than the other.                </span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
