@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body x-data="slider">
+    <div class="flex justify-center items-center bg-green-200 h-20 w-full">
+        <span>~ Carousel Slider Using AlpineJS ~</span>
+    </div>
+    <div x-data="{pointer:1}">
+    <div x-data="items" class="flex items-center justify-center bg-blue-100 w-96 h-96">
+        <template x-for="item in items">
+            <div class="flex items-center justify-center bg-blue-300 p-4 rounded-lg h-80 w-80">
+            <button class="text-blue-300 rounded-full relative right-24 h-10 w-10 bg-blue-100" @click="i.current=handleClickMinus(i.current);pointer=i.current">&larr;</button>
+            <span class="text-blue-500 text-6xl" x-text="i.current+'/5'"></span>
+            <button class="text-blue-300 rounded-full relative left-24 h-10 w-10 bg-blue-100"  @click="i.current=handleClickPlus(i.current);pointer=i.current">&rarr;</button>
+        </div>
+        </template>
+    </div>
+    <div class="flex  gap-7 items-center justify-center bg-blue-100 w-96">
+        <span class="p-4 rounded-3xl" :class="pointer==1 ? 'bg-red-200' : 'bg-green-200'"></span>
+        <span class="p-4 rounded-3xl" :class="pointer==2 ? 'bg-red-200' : 'bg-green-200'"></span>
+        <span class="p-4 rounded-3xl" :class="pointer==3 ? 'bg-red-200' : 'bg-green-200'"></span>
+        <span class="p-4 rounded-3xl" :class="pointer==4 ? 'bg-red-200' : 'bg-green-200'"></span>
+        <span class="p-4 rounded-3xl" :class="pointer==5 ? 'bg-red-200' : 'bg-green-200'"></span>
+    </div>
+</div>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('slider', () => ({
+                items() {
+
+                    return {
+                        i: {
+                            current: 1,
+                            images: [
+                                1,2,3,4,5
+                            ],
+                            pointer:1
+                        }
+                    }
+                },
+                handleClickPlus(e) {
+                    if (e < 5)
+                        return e = e + 1;
+                    else
+                        return 1;
+                },
+                handleClickMinus(e) {
+                    if (e > 1)
+                        return e = e - 1;
+                    else
+                        return 5;
+                }
+            }))
+        })
+    </script>
+</body>
+
+</html>
