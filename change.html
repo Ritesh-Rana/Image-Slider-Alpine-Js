@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headache</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body x-data="xx=colors()" id="background" class="">
+    <span x-text="xx"></span>
+    <p class="animate-bounce text-9xl">Free Headache</p>
+    <p class="animate-spin text-9xl">Free Headache</p>
+    <p class="animate-pulse text-9xl">Free Headache</p>
+    <p class="animate-ping text-9xl">Free Headache</p>
+    <div  style="height: 200px;"></div>
+</body>
+<script>
+    var doc = document.getElementById("background");
+    var color = ["black", "blue", "brown", "green"];
+    var i = 0;
+    function change() {
+        doc.style.backgroundColor = color[i];
+        i++;
+
+        if (i > color.length - 1) {
+            i = 0;
+        }
+    }
+    setInterval(change, 100);
+    function colors() {
+        return Math.random();
+    }
+</script>
+
+</html>
