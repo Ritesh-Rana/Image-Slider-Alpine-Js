@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body>
+    <div x-data="{p:0}">
+        <div x-data="result=currentPage()">
+            <div class="grid grid-cols-5 m-4 bg-gray-100 rounded-xl p-4">
+                <span>Title</span>
+                <span class="col-span-2">Description</span>
+                <span>Status</span>
+                <span class="text-center">Page</span>
+            </div>
+            <template x-for="item in result">
+                <template x-for="y in item[p]">
+                    <div class="grid grid-cols-5 m-6">
+                        <span x-text="y.title"></span>
+                        <span class="col-span-2" x-text="y.description"></span>
+                        <span x-text="y.publish" :class="y.publish=='published' ? 'bg-green-300 rounded text-center w-1/2 h-6' : 'line-through text-center w-1/2 h-6'"></span>
+                        <span x-text="y.page" class="text-center"></span>
+                    </div>
+                </template>
+            </template>
+        </div>
+        <span x-text="' currentPage : '+ (p+1)"></span>
+        <div class="flex items-center justify-center gap-4 bg-red-100 p-4">
+            <button @click="p=p-2" class="px-2 border-2 border-gray-500 rounded"><<</button>
+            <button @click="p--" class="px-2 border-2 border-gray-500 rounded"><</button>
+            <button   x-show="p>0" x-text="p" class="px-2 border-2 border-gray-500 rounded"></button>
+            <button  x-text="p+1" class="px-2 border-2 border-gray-500 rounded bg-green-300" ></button>
+            <button   x-text="p+2" class="px-2 border-2 border-gray-500 rounded" ></button>
+            <button @click="p++" class="px-2 border-2 border-gray-500 rounded">></button>
+            <button @click="p=p+2" class="px-2 border-2 border-gray-500 rounded">>></button>
+        </div>
+    </div>
+    <script>
+        function currentPage() {
+            var x = [[
+                [
+                    { title: 'title1', description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labore consectetur voluptates quia a, ducimus, facilis dolores quidem quasi voluptate velit. Deleniti, rerum. Consequatur, rem! Animi!', publish: 'published', page: 1 },
+                    { title: 'title2', description: 'description2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labore consectetur voluptates quia a, ducimus, facilis dolores quidem quasi voluptate velit. Deleniti, rerum. Consequatur, rem! Animi!', publish: 'published', page: 1 },
+                    { title: 'title3', description: 'description2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labore consectetur voluptates quia a, ducimus, facilis dolores quidem quasi voluptate velit. Deleniti, rerum. Consequatur, rem! Animi!', publish: 'published', page: 1 },
+                    { title: 'title4', description: 'description2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labore consectetur voluptates quia a, ducimus, facilis dolores quidem quasi voluptate velit. Deleniti, rerum. Consequatur, rem! Animi!', publish: 'published', page: 1 },
+                    { title: 'title5', description: 'description2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labore consectetur voluptates quia a, ducimus, facilis dolores quidem quasi voluptate velit. Deleniti, rerum. Consequatur, rem! Animi!', publish: 'published', page: 1 },
+                ],
+                [
+                    { title: 'title6', description: ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labor', publish: 'published', page: 2 },
+                    { title: 'title7', description: 'description', publish: 'published', page: 2 },
+                    { title: 'title8', description: ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labor', publish: 'published', page: 2 },
+                    { title: 'title9', description: ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labor', publish: 'published', page: 2 },
+                    { title: 'title10', description: 'description', publish: 'published', page: 2 },
+                ],
+                [
+                    { title: 'title11', description: ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labor', publish: 'published', page: 3 },
+                    { title: 'title12', description: 'description', publish: 'published', page: 3 },
+                    { title: 'title13', description: ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labor', publish: 'published', page: 3 },
+                    { title: 'title14', description: 'description2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labore consectetur voluptates quia a, ducimus, facilis dolores quidem quasi voluptate velit. Deleniti, rerum. Consequatur, rem! Animi!', publish: 'Not published', page: 3 },
+                    { title: 'title15', description: ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur fuga repellendus necessitatibus beatae labor', publish: 'published', page: 3 },
+                ]
+            ]];
+
+            return x;
+        }
+    </script>
+
+</html>
