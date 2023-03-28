@@ -11,25 +11,36 @@
 </head>
 
 <body>
-  <div x-data="dates">
-    <table>
-      <tr>
-        <th class="px-4">Sun</th>
-        <th class="px-4">Mon</th>
-        <th class="px-4">Tue</th>
-        <th class="px-4">Wed</th>
-        <th class="px-4">Thu</th>
-        <th class="px-4">Fri</th>
-        <th class="px-4">Sat</th>
-      </tr>
-      
-    </table>
+  <div x-data="{monthdates:monthdates(),currentmonth:1}" class="flex justify-center items-center mt-11">
+    <div class="bg-gray-100 w-96 h-96 p-4 rounded-lg shadow-lg border-4" x-data="{}">
+      <button class="bg-blue-400 hover:bg-blue-600 w-8" @click="currentmonth=changemonth(currentmonth,1)">&larr;</button>
+      <button class="bg-blue-400 hover:bg-blue-600 w-8" @click="currentmonth=changemonth(currentmonth,0)">&rarr;</button>
+      <span x-text="currentmonth"></span>
+      <div class="grid grid-cols-7">
+        <span>Sun</span>
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+        <template x-for="i in monthdates">
+          <span x-text="i"></span>
+        </template>
+      </div>
+    </div>
   </div>
 </body>
 
 <script>
-  function dates() {
-    return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  function monthdates(){
+    return 30;
+  }
+  function changemonth(x,y){
+    if(y==0)
+    return ++x;
+    if(y==1)
+    return --x;
   }
 </script>
 
