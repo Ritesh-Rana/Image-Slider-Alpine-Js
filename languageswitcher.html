@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body
+    x-data="{open:false,selected:'Japan (6)',img:'https://www.sic-info.org/wp-content/uploads/2014/01/jp.png',text:'無料言語交換レッスン/日本人との交流/日本語を話す練習。日本語を話す無料練習/日本人との交流/日本文化を学びます。オンラインで手軽に参加。世界中の外国人と交流。 NPO法人。無料言語交換レッスン/日本人との交流/日本語を話す練習。日本語を話す無料練習/日本人との交流/日本文化を学びます。オンラインで手軽に参加。世界中の外国人と交流。 NPO法人。無料言語交換レッスン/日本人との交流/日本語を話す練習。日本語を話す無料練習/日本人との交流/日本文化を学びます。オンラインで手軽に参加。世界中の外国人と交流。 NPO法人。無料言語交換レッスン/日本人との交流/日本語を話す練習。日本語を話す無料練習/日本人との交流/日本文化を学びます。オンラインで手軽に参加。世界中の外国人と交流。 NPO法人。'}"
+    class="ml-10 mt-10">
+    <div x-data="c=flag()">
+        <div>
+            <button @click="open=!open"><img :src="img" alt=""></button>
+            <span x-text="selected"></span>
+        </div>
+        <div x-show="open" class="fixed z-30 overflow-auto bg-gray-100 shadow-lg rounded p-2" x-transition:enter.duration.500ms x-transition:leave.duration.500ms>
+            <template x-for="item in c">
+                <div x-data="{country:item.image}" class="flex items-center">
+                    <img @click="selected=item.country;img=item.image;text=item.text;open=false" :src="country"
+                        class="border-2 " alt="Country">
+                    <span x-text="item.country"></span>
+                </div>
+            </template>
+        </div>
+        <div class="bg-slate-100 shadow-lg rounded-lg p-1">
+            <span x-text="text"></span>
+        </div>
+    </div>
+</body>
+<script>
+    function flag() {
+        return [
+            { image: 'https://www.sic-info.org/wp-content/uploads/2014/01/jp.png', country: ' Japan (6)', text: '無料言語交換レッスン/日本人との交流/日本語を話す練習。日本語を話す無料練習/日本人との交流/日本文化を学びます。オンラインで手軽に参加。世界中の外国人と交流。 NPO法人。無料言語交換レッスン/日本人との交流/日本語を話す練習。日本語を話す無料練習/日本人との交流/日本文化を学びます。オンラインで手軽に参加。世界中の外国人と交流。 NPO法人。無料言語交換レッスン/日本人との交流/日本語を話す練習。日本語を話す無料練習/日本人との交流/日本文化を学びます。オンラインで手軽に参加。世界中の外国人と交流。 NPO法人。無料言語交換レッスン/日本人との交流/日本語を話す練習。日本語を話す無料練習/日本人との交流/日本文化を学びます。オンラインで手軽に参加。世界中の外国人と交流。 NPO法人。' }
+            , { image: 'https://www.sic-info.org/wp-content/uploads/2014/01/kp.png', country: ' North Korea (2)', text: '무료 언어 교환 수업/일본인과의 교류/일본어 말하기 연습. 무료 일본어 말하기 연습 / 일본인과 교류 / 일본 문화 배우기. 온라인으로 手軽に参加.世界中の外国人과 交流. NPO 법인.무료 언어 교환 수업/일본인과의 교류/일본어 말하기 연습. 무료 일본어 말하기 연습 / 일본인과 교류 / 일본 문화 배우기. 온라인으로 手軽に参加.世界中の外国人과 交流. NPO 법인.무료 언어 교환 수업/일본인과의 교류/일본어 말하기 연습. 무료 일본어 말하기 연습 / 일본인과 교류 / 일본 문화 배우기. 온라인으로 手軽に参加.世界中の外国人과 交流. NPO 법인.무료 언어 교환 수업/일본인과의 교류/일본어 말하기 연습. 무료 일본어 말하기 연습 / 일본인과 교류 / 일본 문화 배우기. 온라인으로 手軽に参加.世界中の外国人과 交流. NPO 법인.' }
+            , { image: 'https://www.sic-info.org/wp-content/uploads/2014/01/cn.png', country: 'China', text: '免费语言交流课程/与日本人交流/练习说日语。自由练习说日语/与日本人互动/学习日本文化。オンラインド手軽ニ参加。世界中の外国人と交流。 NPO法人。免费语言交流课程/与日本人交流/练习说日语。自由练习说日语/与日本人互动/学习日本文化。オンラインド手軽ニ参加。世界中の外国人と交流。 NPO法人。免费语言交流课程/与日本人交流/练习说日语。自由练习说日语/与日本人互动/学习日本文化。オンラインド手軽ニ参加。世界中の外国人と交流。 NPO法人。免费语言交流课程/与日本人交流/练习说日语。自由练习说日语/与日本人互动/学习日本文化。オンラインド手軽ニ参加。世界中の外国人と交流。 NPO法人。免费语言交流课程/与日本人交流/练习说日语。自由练习说日语/与日本人互动/学习日本文化。オンラインド手軽ニ参加。世界中の外国人と交流。 NPO法人。' }
+            , { image: 'https://www.sic-info.org/wp-content/uploads/2014/01/ph.png ', country: ' Philippines (5) ', text: 'تعامل با ژاپنی ها/تمرین ژاپنی صحبت کردن. رایگان تمرین زبان ژاپنی/ تعامل با مردم ژاپن/ فرهنگ ژاپنی را بیاموزید.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.تعامل با ژاپنی ها/تمرین ژاپنی صحبت کردن. رایگان تمرین زبان ژاپنی/ تعامل با مردم ژاپن/ فرهنگ ژاپنی را بیاموزید.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.تعامل با ژاپنی ها/تمرین ژاپنی صحبت کردن. رایگان تمرین زبان ژاپنی/ تعامل با مردم ژاپن/ فرهنگ ژاپنی را بیاموزید.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.تعامل با ژاپنی ها/تمرین ژاپنی صحبت کردن. رایگان تمرین زبان ژاپنی/ تعامل با مردم ژاپن/ فرهنگ ژاپنی را بیاموزید.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.' }
+            , { image: ' https://www.sic-info.org/wp-content/uploads/2014/01/lk.png', country: '  Sri Lanka (1)', text: 'Mësimi falas i shkëmbimit të gjuhës / Ndërveprim me japonezët / Praktikoni të folurit japonez. Pa pagesë Praktikoni të folurit japonez/ Ndërveproni me japonezët/ Mësoni kulturën japoneze.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.Mësimi falas i shkëmbimit të gjuhës / Ndërveprim me japonezët / Praktikoni të folurit japonez. Pa pagesë Praktikoni të folurit japonez/ Ndërveproni me japonezët/ Mësoni kulturën japoneze.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.Mësimi falas i shkëmbimit të gjuhës / Ndërveprim me japonezët / Praktikoni të folurit japonez. Pa pagesë Praktikoni të folurit japonez/ Ndërveproni me japonezët/ Mësoni kulturën japoneze.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.Mësimi falas i shkëmbimit të gjuhës / Ndërveprim me japonezët / Praktikoni të folurit japonez. Pa pagesë Praktikoni të folurit japonez/ Ndërveproni me japonezët/ Mësoni kulturën japoneze.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.Mësimi falas i shkëmbimit të gjuhës / Ndërveprim me japonezët / Praktikoni të folurit japonez. Pa pagesë Praktikoni të folurit japonez/ Ndërveproni me japonezët/ Mësoni kulturën japoneze.オンラインで手軽に参加.世界中の外国人と交流. NPO法人.' }
+            , { image: 'https://www.sic-info.org/wp-content/uploads/2014/01/in.png ', country: '  India (5)', text: 'मुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखेंमुफ्त भाषा विनिमय पाठ/जापानी लोगों के साथ बातचीत/जापानी बोलने का अभ्यास करें। जापानी बोलने का नि:शुल्क अभ्यास करें/ जापानी लोगों के साथ बातचीत करें/ जापानी संस्कृति सीखें' }
+            , { image: 'https://www.sic-info.org/wp-content/uploads/2014/01/my.png ', country: ' Malaysia (5) ', text: 'Libre a leksion ti panagsinnukat ti pagsasao/Panangilangen kadagiti tattao a Hapones/Agsanay nga agsao iti Hapones. Libre Agsanay nga agsao iti HaponesLibre a leksion ti panagsinnukat ti pagsasao/Panangilangen kadagiti tattao a Hapones/Agsanay nga agsao iti Hapones. Libre Agsanay nga agsao iti HaponesLibre a leksion ti panagsinnukat ti pagsasao/Panangilangen kadagiti tattao a Hapones/Agsanay nga agsao iti Hapones. Libre Agsanay nga agsao iti HaponesLibre a leksion ti panagsinnukat ti pagsasao/Panangilangen kadagiti tattao a Hapones/Agsanay nga agsao iti Hapones. Libre Agsanay nga agsao iti HaponesLibre a leksion ti panagsinnukat ti pagsasao/Panangilangen kadagiti tattao a Hapones/Agsanay nga agsao iti Hapones. Libre Agsanay nga agsao iti HaponesLibre a leksion ti panagsinnukat ti pagsasao/Panangilangen kadagiti tattao a Hapones/Agsanay nga agsao iti Hapones. Libre Agsanay nga agsao iti HaponesLibre a leksion ti panagsinnukat ti pagsasao/Panangilangen kadagiti tattao a Hapones/Agsanay nga agsao iti Hapones. Libre Agsanay nga agsao iti Hapones' }
+            , { image: ' https://www.sic-info.org/wp-content/uploads/2014/01/mn.png', country: '  Mongolia (2)', text: 'Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.Үнэ төлбөргүй хэл солилцох хичээл/Япон хүмүүстэй харилцах/Япон хэлээр ярих дадлага. Япон хэлээр ярих үнэгүй дадлага хийх/ Япон хүмүүстэй харилцах/ Япон соёлыг сур.' }
+
+        ]
+    }
+
+</script>
+
+</html>
