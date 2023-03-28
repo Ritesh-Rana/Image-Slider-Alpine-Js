@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calender</title>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body>
+  <div x-data="dates">
+    <table>
+      <tr>
+        <th class="px-4">Sun</th>
+        <th class="px-4">Mon</th>
+        <th class="px-4">Tue</th>
+        <th class="px-4">Wed</th>
+        <th class="px-4">Thu</th>
+        <th class="px-4">Fri</th>
+        <th class="px-4">Sat</th>
+      </tr>
+      
+    </table>
+  </div>
+</body>
+
+<script>
+  function dates() {
+    return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  }
+</script>
+
+</html>
