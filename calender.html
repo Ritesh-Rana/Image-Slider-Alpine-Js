@@ -10,12 +10,14 @@
   <link rel="stylesheet" href="public/style.css">
 </head>
 
-<body>
-  <div x-data="{monthdates:monthdates(),currentmonth:1}" class="flex justify-center items-center mt-11">
-    <div class="bg-gray-100 w-96 h-96 p-4 rounded-lg shadow-lg border-4" x-data="{}">
-      <button class="bg-blue-400 hover:bg-blue-600 w-8" @click="currentmonth=changemonth(currentmonth,1)">&larr;</button>
-      <button class="bg-blue-400 hover:bg-blue-600 w-8" @click="currentmonth=changemonth(currentmonth,0)">&rarr;</button>
-      <span x-text="currentmonth"></span>
+<body x-data="{items:[]}">
+  <div x-data="{currentmonth:1}" class="flex justify-center items-center mt-11">
+    <div class="bg-gray-100 w-96 h-96 p-4 rounded-lg shadow-lg border-4" x-data="{monthdate:monthdates(currentmonth)}">
+      <button class="bg-blue-400 hover:bg-blue-600 w-8"
+        @click="currentmonth=changemonth(currentmonth,1);monthdate=monthdates(currentmonth)">&larr;</button>
+      <button class="bg-blue-400 hover:bg-blue-600 w-8"
+        @click="currentmonth=changemonth(currentmonth,0);monthdate=monthdates(currentmonth)">&rarr;</button>
+      <span x-text="monthlable(currentmonth)+ ' 2023'"></span>
       <div class="grid grid-cols-7">
         <span>Sun</span>
         <span>Mon</span>
@@ -24,23 +26,44 @@
         <span>Thu</span>
         <span>Fri</span>
         <span>Sat</span>
-        <template x-for="i in monthdates">
-          <span x-text="i"></span>
+        <template x-for="space in spaces(currentmonth)">
+          <span></span>
+        </template>
+        <template x-for="i in monthdate">
+          <div x-data="{key:i+monthlable(currentmonth)+ ' 2023'}">
+            <span x-text="i" @click="items.push({key:key})"></span>
+          </div>
         </template>
       </div>
     </div>
   </div>
+  <div>
+    <template x-for="i in items">
+      <h1 x-text="i.key"></h1>
+    </template>
+  </div>
 </body>
 
 <script>
-  function monthdates(){
-    return 30;
+  function monthdates(currentmonth) {
+    var x = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    return x[currentmonth - 1];
   }
-  function changemonth(x,y){
-    if(y==0)
-    return ++x;
-    if(y==1)
-    return --x;
+  function changemonth(x, y) {
+
+    if (y == 0 && x < 12)
+      return ++x;
+    if (y == 1 && x > 1)
+      return --x;
+    return 1;
+  }
+  function spaces(currentmonth) {
+    var x = [0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5];
+    return x[currentmonth - 1];
+  }
+  function monthlable(currentmonth) {
+    var x = ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return x[currentmonth - 1];
   }
 </script>
 
