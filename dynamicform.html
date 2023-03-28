@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body x-data="{items:[1],lastid:1}">    
+    <div>
+        <div class="m-10 p-10">
+            <button class="bg-blue-700 rounded-xl p-2" @click="items.push(++lastid)">+ADD</button>
+            <div class="grid grid-cols-4 gap-8 bg-gray-200 rounded m-2">
+                <span>#</span>
+                <span>Field 1</span>
+                <span>Field 2</span>
+                <button>Remove</button>
+            </div>
+            <template x-for="(i,j) in items">
+                <div class="grid grid-cols-4 gap-8 m-2">
+                    <span x-text="i"></span>
+                    <input type="text" class="border-2 border-red-100">
+                    <input type="text" class="border-2 border-red-100">
+                    <button @click="items=update(items,j)">X</button>
+                </div>
+            </template>
+        </div>
+    </div>     
+</body>
+<script>
+    function update(array,j){
+        x=[];
+        for (let index = 0; index < array.length; index++) {
+            if(index!=j)
+                x.push(array[index]);
+        }
+        alert(x);
+        return x;
+    };
+</script>
+</html>
