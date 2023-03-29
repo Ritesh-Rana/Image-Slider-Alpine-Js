@@ -18,7 +18,8 @@
       <button class="bg-blue-400 hover:bg-blue-600 w-8"
         @click="currentmonth=changemonth(currentmonth,0);monthdate=monthdates(currentmonth)">&rarr;</button>
       <span x-text="monthlable(currentmonth)+ ' 2023'"></span>
-      <div class="grid grid-cols-7">
+      <div class="grid grid-cols-7" x-data="{pickeddate:''}">
+        <input type="text" x-model="pickeddate" class="col-span-7 p-2 ">
         <span>Sun</span>
         <span>Mon</span>
         <span>Tue</span>
@@ -30,17 +31,12 @@
           <span></span>
         </template>
         <template x-for="i in monthdate">
-          <div x-data="{key:i+monthlable(currentmonth)+ ' 2023'}">
-            <span x-text="i" @click="items.push({key:key})"></span>
+          <div x-data="{show: false}">
+            <span x-text="i" @click="pickeddate=(i+monthlable(currentmonth)+ ' 2023')"></span>
           </div>
         </template>
       </div>
     </div>
-  </div>
-  <div>
-    <template x-for="i in items">
-      <h1 x-text="i.key"></h1>
-    </template>
   </div>
 </body>
 
