@@ -12,7 +12,7 @@
 
 <body x-data="{items:[]}">
   <div x-data="{currentmonth:1,pickeddate:''}" class="flex justify-center items-center mt-11">
-    <div class="bg-gray-100 w-96 h-96 p-4 rounded-lg shadow-lg border-4" x-data="{monthdate:monthdates(currentmonth),showinput:false}">
+    <div class="bg-gray-100 w-96 h-full p-4 rounded-lg shadow-lg border-4" x-data="{monthdate:monthdates(currentmonth),showinput:false}">
       <button class="bg-blue-400 hover:bg-blue-600 w-8"
         @click="currentmonth=changemonth(currentmonth,1);monthdate=monthdates(currentmonth)">&larr;</button>
       <button class="bg-blue-400 hover:bg-blue-600 w-8"
@@ -40,10 +40,10 @@
       <div x-show="showinput" x-data="{timing:''}">
         <h1>Add Timings</h1>
         <input type="text" x-model="timing" placeholder="Add Timings">
-        <button @click="items.push({pickeddate:timing});alert(pickeddate);">Add</button>
+        <button @click="items.push({pickeddate:pickeddate+timing});alert(pickeddate);">Add</button>
       </div>
       <template x-for="(item,j) in items">
-        <h1 x-text="(j+1)+'. '+item.1Jan 2023"></h1>
+        <h1 x-text="(j+1)+'. '+item.pickeddate"></h1>
       </template>
     </div>
   </div>
