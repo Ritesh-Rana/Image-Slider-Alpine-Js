@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body x-data="{mindex:2}">
+    <div class="grid grid-cols-3">
+    <div x-data="{month:getmonthdates(mindex),monthlable:' ',day:' ',currentdate:' ',currentmonth:'',year:''}" class="m-16 shadow-2xl w-96 p-4
+     rounded-xl border-4 border-blue-400">
+        <button @click="month=getmonthdates(--mindex)">&larr;</button>
+        <button @click="month=getmonthdates(++mindex)">&rarr;</button>
+        <span x-text="monthlable" ></span>
+        <span x-text="year" ></span>
+        <div class="grid grid-cols-7 w-80">
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+        <template x-for="i in month">
+                <span x-text="i.date" :class="(currentmonth==monthlable && currentdate==i.date) ? 'border-2 border-blue-400 rounded-full w-[22px]' : ''" x-effect="day=i.daylable;monthlable=i.monthlable;currentdate=i.currentdate;currentmonth=i.currentmonth;year=i.year"></span>
+            </template>
+        </div>
+    </div>
+    <div class="m-16 shadow-2xl p-4 rounded-xl border-4 h-96 border-green-400 col-span-2">
+        <template x-for="i in 100">
+            <br>
+        </template>
+    </div>
+ </div>
+</div>
+</body>
+<script>
+    function getmonthdates(m) {
+        var date = new Date(), y = date.getFullYear(), m = m;
+        var firstDay = new Date(y, m, 1);
+        var lastDay = new Date(y, m + 1, 0);
+        var monthdate = [];
+        firstDaydate = String(firstDay).split(" ")[2];
+        firstDaydate = parseInt(firstDaydate);
+        lastDaydate = String(lastDay).split(" ")[2];
+        lastDaydate = parseInt(lastDaydate);
+        
+        currentdate=String(date).split(" ")[2];
+        currentmonth=String(date).split(" ")[1];
+        
+        year=String(firstDay).split(" ")[3];
+        monthlable = String(firstDay).split(" ")[1];
+        firstDaydatelable = String(firstDay).split(" ")[0];
+        if(firstDaydatelable=="Mon"){
+            monthdate.push(' ');
+        }if(firstDaydatelable=="Tue"){
+            monthdate.push(' ');
+            monthdate.push(' ');
+        }if(firstDaydatelable=="Wed"){
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+        }if(firstDaydatelable=="Thu"){
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+        }if(firstDaydatelable=="Fri"){
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+        }if(firstDaydatelable=="Sat"){
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+            monthdate.push(' ');
+        }
+        for (let index = firstDaydate; index <= lastDaydate; index++) {
+            monthdate.push({date:index});
+        }
+        monthdate.push({monthlable:monthlable,daylable:firstDaydatelable,currentdate:currentdate,currentmonth:currentmonth,year:year});
+        
+        return monthdate;
+    }
+</script>
+
+</html>
