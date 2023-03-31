@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="public/style.css">
 </head>
 
-<body x-data="{mindex:2,items:[]}">
-    <div class="grid grid-cols-3" x-data="items=[]">
+<body x-data="{mindex:2,items:[],clickdate:''}">
+    <div class="grid grid-cols-3">
         <div x-data="{month:getmonthdates(mindex),monthlable:' ',day:' ',currentdate:' ',currentmonth:'',year:''}"
             class="m-16 shadow-2xl w-96 p-4 rounded-xl border-4 border-blue-400">
             <button @click="month=getmonthdates(--mindex)">&larr;</button>
@@ -28,9 +28,11 @@
                 <span>Sat</span>
                 <hr class="col-span-7">
                 <template x-for="i in month">
-                    <span @click="i.date ? items=contains(items,i.date+i.monthlable+i.year) : ' '" x-text="i.date"
+                    <span
+                        @click="i.date ? items=contains(items,i.date+i.monthlable+i.year) : ' ';clickdate=(i.date+i.monthlable+i.year)"
+                        x-text="i.date"
                         class="hover:bg-black hover:text-white text-center hover:rounded-full hover:cursor-pointer"
-                        :class="(currentmonth==monthlable & currentdate==i.date) ? 'border-2 border-blue-400 rounded-full text-center' : ''"
+                        :class="(currentmonth==monthlable & currentdate==i.date & year==2023) ? 'border-2 border-blue-400 rounded-full text-center' : ''"
                         x-effect="day=i.daylable;monthlable=i.monthlable;currentdate=i.currentdate;currentmonth=i.currentmonth;year=i.year"></span>
                 </template>
             </div>
@@ -38,16 +40,25 @@
         <div x-show="items.length" class="m-16 shadow-2xl p-4 rounded-xl border-4 h-full border-green-400 col-span-2">
             <div class="grid grid-cols-4">
                 <h1 class="col-span-4 text-red-400 text-center">These date have stored Timings</h1>
-                <input x-ref="searchField" x-model="search" x-on:keydown.window.prevent.slash="$refs.searchField.focus()" placeholder="Search for a date..." type="search"
-                class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-700 font-bold rounded-lg px-4 py-3"/>
+                <input x-ref="searchField" x-model="search"
+                    x-on:keydown.window.prevent.slash="$refs.searchField.focus()" placeholder="Search for a date..."
+                    type="search"
+                    class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-700 font-bold rounded-lg px-4 py-3 col-span-4" />
                 <template x-for="item in items">
                     <span x-text="item.date"></span>
                 </template>
             </div>
         </div>
-        <div x-show="items.length"
-            x-data="{month:getmonthdates(mindex),monthlable:' ',day:' ',currentdate:' ',currentmonth:'',year:''}"
-            class="m-16 shadow-2xl w-96 p-4 rounded-xl border-4 border-blue-400">
+        <div x-show="items.length" class="m-16 shadow-2xl w-96 p-4 rounded-xl border-4 border-blue-400"
+            x-data="{datas:[],input:''}">
+            <div class="flex items-center justify-center gap-4">
+                <input type="text" x-model="input" class="border-2 border-red-200 ">
+                <button @click="datas.push({time:[clickdate,input]})">Add</button>
+            </div>
+            <h1 x-text="clickdate"></h1>
+            <template x-for="(data,i,j) in datas">
+                    <h2 x-show="data.time[0]==clickdate" x-text="data.time[1]"></h2>
+            </template>
         </div>
 
     </div>
