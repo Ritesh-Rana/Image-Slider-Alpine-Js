@@ -21,7 +21,7 @@
             <span x-show="show" x-text="monthlable"></span>
             <span x-show="show" x-text="year"></span>
            
-            <div x-show="show" class="grid grid-cols-7 w-80">
+            <div x-show="show" x-transition:enter="transition duration-1000 transform" x-transition:enter-start="scale-75" class="grid grid-cols-7 w-80">
                 <span>Sun</span>
                 <span>Mon</span>
                 <span>Tue</span>
