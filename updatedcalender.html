@@ -11,7 +11,7 @@
 </head>
 
 <body x-data="{mindex:2,items:[]}">
-    <div class="grid grid-cols-3" x-data="items=[1]">
+    <div class="grid grid-cols-3" x-data="items=[]">
         <div x-data="{month:getmonthdates(mindex),monthlable:' ',day:' ',currentdate:' ',currentmonth:'',year:''}"
             class="m-16 shadow-2xl w-96 p-4 rounded-xl border-4 border-blue-400">
             <button @click="month=getmonthdates(--mindex)">&larr;</button>
@@ -28,14 +28,18 @@
                 <span>Sat</span>
                 <hr class="col-span-7">
                 <template x-for="i in month">
-                    <span @click="items=contains(items,i.date+i.monthlable+i.year)" x-text="i.date"
-                        :class="(currentmonth==monthlable & currentdate==i.date) ? 'border-2 border-blue-400 rounded-full w-[22px]' : ''"
+                    <span @click="i.date ? items=contains(items,i.date+i.monthlable+i.year) : ' '" x-text="i.date"
+                        class="hover:bg-black hover:text-white text-center hover:rounded-full hover:cursor-pointer"
+                        :class="(currentmonth==monthlable & currentdate==i.date) ? 'border-2 border-blue-400 rounded-full text-center' : ''"
                         x-effect="day=i.daylable;monthlable=i.monthlable;currentdate=i.currentdate;currentmonth=i.currentmonth;year=i.year"></span>
                 </template>
             </div>
         </div>
         <div x-show="items.length" class="m-16 shadow-2xl p-4 rounded-xl border-4 h-full border-green-400 col-span-2">
             <div class="grid grid-cols-4">
+                <h1 class="col-span-4 text-red-400 text-center">These date have stored Timings</h1>
+                <input x-ref="searchField" x-model="search" x-on:keydown.window.prevent.slash="$refs.searchField.focus()" placeholder="Search for a date..." type="search"
+                class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-700 font-bold rounded-lg px-4 py-3"/>
                 <template x-for="item in items">
                     <span x-text="item.date"></span>
                 </template>
@@ -44,7 +48,6 @@
         <div x-show="items.length"
             x-data="{month:getmonthdates(mindex),monthlable:' ',day:' ',currentdate:' ',currentmonth:'',year:''}"
             class="m-16 shadow-2xl w-96 p-4 rounded-xl border-4 border-blue-400">
-
         </div>
 
     </div>
