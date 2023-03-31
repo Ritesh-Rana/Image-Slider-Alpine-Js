@@ -14,10 +14,12 @@
     <div class="grid grid-cols-3">
         <div x-data="{month:getmonthdates(mindex),monthlable:' ',day:' ',currentdate:' ',currentmonth:'',year:''}"
             class="m-16 shadow-2xl w-96 p-4 rounded-xl border-4 border-blue-400">
-            <button @click="month=getmonthdates(--mindex)">&larr;</button>
-            <button @click="month=getmonthdates(++mindex)">&rarr;</button>
+            <button @click="month=getmonthdates(--mindex)" class="hover:rounded-full hover:bg-slate-400 p-2">&larr;</button>
+            <button @click="month=getmonthdates(++mindex)" class="hover:rounded-full hover:bg-slate-400 p-2">&rarr;</button>
+           
             <span x-text="monthlable"></span>
             <span x-text="year"></span>
+           
             <div class="grid grid-cols-7 w-80">
                 <span>Sun</span>
                 <span>Mon</span>
